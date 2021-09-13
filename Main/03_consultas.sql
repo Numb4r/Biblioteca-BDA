@@ -54,7 +54,6 @@ SELECT u.nome
 ,u.email
 ,l.titulo
 ,e.dataEmprestimo
-,e.dataDevolucao
 ,DATE_ADD(e.dataEmprestimo, INTERVAL e.diasEmprestado DAY) dataLimite,
 DATEDIFF(IF(e.dataDevolucao IS NULL,NOW(), e.dataDevolucao), DATE_ADD(e.dataEmprestimo, INTERVAL e.diasEmprestado DAY)) as diasAtraso
 FROM usuario u
