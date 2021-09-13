@@ -93,17 +93,11 @@ INSERT INTO usuario (nome, email, endereco_id) VALUES
   ("Samantha Paranhos Argolo", "samantha@email.com", 6);
 
 INSERT INTO telefone (usuario_id, telefone) VALUES
-  (1, "(84) 38613324"),
   (1, "(84) 993359918"),
-  (2, "(32) 2776-6871"),
   (2, "(32) 98228-9626"),
-  (3, "(68) 3601-2467"),
   (3, "(68) 99222-8276"),
-  (4, "(27) 3669-1610"),
   (4, "(27) 98905-0580"),
-  (5, "(45) 2873-4569"),
   (5, "(45) 99301-8145"),
-  (6, "(51) 2939-3771"),
   (6, "(51) 99876-4332");
 
 INSERT INTO emprestimo (dataEmprestimo, diasEmprestado, dataDevolucao, id_usuario, codigoExemplar) VALUES

@@ -53,14 +53,15 @@ SELECT u.nome
 ,t.telefone 
 ,u.email
 ,l.titulo
-,e.dataEmprestimo 
+,e.dataEmprestimo
+,e.dataDevolucao
 ,DATE_ADD(e.dataEmprestimo, INTERVAL e.diasEmprestado DAY) dataLimite,
-DATEDIFF(NOW(), DATE_ADD(e.dataEmprestimo, INTERVAL e.diasEmprestado DAY)) as diasAtraso
+DATEDIFF(IF(e.dataDevolucao IS NULL,NOW(), e.dataDevolucao), DATE_ADD(e.dataEmprestimo, INTERVAL e.diasEmprestado DAY)) as diasAtraso
 FROM usuario u
 JOIN telefone t ON t.usuario_id = u.id
 JOIN emprestimo e ON e.id_usuario = u.id 
 JOIN exemplar ex ON ex.codigoExemplar = e.codigoExemplar
 JOIN livro l ON l.ISBN = ex.ISBN_livro
-WHERE DATEDIFF(NOW(), DATE_ADD(e.dataEmprestimo, INTERVAL e.diasEmprestado DAY)) > 0 
+WHERE DATEDIFF(IF(e.dataDevolucao IS NULL,NOW(), e.dataDevolucao), DATE_ADD(e.dataEmprestimo, INTERVAL e.diasEmprestado DAY)) > 0 
 ORDER BY u.nome ASC
 ;
